@@ -13,17 +13,18 @@ class Widget: AppWidgetProvider() {
     override fun onUpdate(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
-        appWidgetIds: IntArray?
+        appWidgetIds: IntArray?,
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
-        if (appWidgetIds == null) return;
-        if (appWidgetManager == null) return;
-        if (context == null) return;
+        if (appWidgetIds == null) return
+        if (appWidgetManager == null) return
+        if (context == null) return
 
         val viewMapping = RemoteViews(
             context.packageName,
             R.layout.widget_medium
-        );
+        )
+        viewMapping.setInt(R.id.widget_bg, "setImageAlpha", 45)
 
         for (appWidgetId in appWidgetIds) {
             appWidgetManager.updateAppWidget(appWidgetId, RemoteViews(viewMapping))
